@@ -1,7 +1,6 @@
 #stadt land fluss game
 import random
 import json
-import os
 
 InputData = open ("countries+cities.json")
 
@@ -12,6 +11,7 @@ def load_database():
 
 def sort_database(json_array):
     names = [item['name'] for item in json_array]
+    #länder sortieren
 
     all_cities = []
     for item in json_array:
@@ -27,20 +27,7 @@ def spielrunde():
     for kategorie in kategorien:
         antwort = input(f"{kategorie} mit {buchstabe}: ")
         # Hier könnte man die Antworten speichern oder auswerten
-
-if __name__ == "__main__":
-    print("Willkommen zu Stadt, Land, Fluss!")
-    print("---------------------------------")
-    # Datenbanken für Städte, Länder und Flüsse (vereinfachte Beispiele)
-    couCitArray = load_database()
-
-
-    names, all_cities = sort_database(couCitArray)
-    print(names)
-    print(all_cities)
-
-
-    def pruefe_antwort(kategorie, antwort, buchstabe):
+def pruefe_antwort(kategorie, antwort, buchstabe):
         antwort = antwort.strip().capitalize()
         if not antwort.startswith(buchstabe):
             return False
@@ -52,7 +39,7 @@ if __name__ == "__main__":
             return antwort in fluesse
         return False
 
-    def spielrunde():
+def spielrunde():
         buchstabe = zufallsbuchstabe()
         print(f"Der Buchstabe ist: {buchstabe}")
         for kategorie in kategorien:
@@ -61,5 +48,16 @@ if __name__ == "__main__":
                 print("Richtig!")
             else:
                 print("Leider falsch oder nicht in der Datenbank.")
+
+
+if __name__ == "__main__":
+    print("Willkommen zu Stadt, Land, Fluss!")
+    print("---------------------------------")
+    # Datenbanken für Städte und Länder laden 
+    couCitArray = load_database()
+    names, all_cities = sort_database(couCitArray)
+    print(names)
+    print(all_cities)
+
 
     spielrunde()

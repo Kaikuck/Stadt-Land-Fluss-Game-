@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Test1",
+    "cities": [
+      "donk",
+      "fonk",
+      "lonk"
+    ]
+  },{
+    "name": "Test2",
+    "cities": [
+      "denk",
+      "fenk",
+      "lenk"
+    ]
+  }
+]
