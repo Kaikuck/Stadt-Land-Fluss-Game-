@@ -10,9 +10,9 @@ def load_database():
         return json.load(InputData)
 
 def sort_database(json_array):
+    # nach Ländern sortieren
     names = [item['name'] for item in json_array]
-    #länder sortieren
-
+    # nach Städten sortieren
     all_cities = []
     for item in json_array:
         all_cities.extend(item['cities'])
@@ -21,12 +21,6 @@ def sort_database(json_array):
 def zufallsbuchstabe():
     return random.choice(buchstaben)
 
-def spielrunde():
-    buchstabe = zufallsbuchstabe()
-    print(f"Der Buchstabe ist: {buchstabe}")
-    for kategorie in kategorien:
-        antwort = input(f"{kategorie} mit {buchstabe}: ")
-        # Hier könnte man die Antworten speichern oder auswerten
 def pruefe_antwort(kategorie, antwort, buchstabe):
         antwort = antwort.strip().capitalize()
         if not antwort.startswith(buchstabe):
@@ -35,8 +29,6 @@ def pruefe_antwort(kategorie, antwort, buchstabe):
             return antwort in staedte
         elif kategorie == "Land":
             return antwort in laender
-        elif kategorie == "Fluss":
-            return antwort in fluesse
         return False
 
 def spielrunde():
