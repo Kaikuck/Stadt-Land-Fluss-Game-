@@ -3,8 +3,11 @@ import random
 import json
 
 InputData = open ("countries+cities.json")
+names = []
+all_cities = []
 
 buchstaben = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+kategorien = [names, all_cities]
 
 def load_database():
         return json.load(InputData)
@@ -26,9 +29,9 @@ def pruefe_antwort(kategorie, antwort, buchstabe):
         if not antwort.startswith(buchstabe):
             return False
         if kategorie == "Stadt":
-            return antwort in staedte
+            return antwort in all_cities
         elif kategorie == "Land":
-            return antwort in laender
+            return antwort in names
         return False
 
 def spielrunde():
