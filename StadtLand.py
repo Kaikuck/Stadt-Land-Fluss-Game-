@@ -1,8 +1,22 @@
 #stadt land fluss game
 import random
+import json
+import os
 
-kategorien = ["Stadt", "Land", "Fluss"]
+InputData = open ("countries+cities.json")
+
 buchstaben = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+def load_database():
+        return json.load(InputData)
+
+def sort_database(json_array):
+    names = [item['name'] for item in json_array]
+
+    all_cities = []
+    for item in json_array:
+        all_cities.extend(item['cities'])
+    return names, all_cities
 
 def zufallsbuchstabe():
     return random.choice(buchstaben)
@@ -18,151 +32,13 @@ if __name__ == "__main__":
     print("Willkommen zu Stadt, Land, Fluss!")
     print("---------------------------------")
     # Datenbanken für Städte, Länder und Flüsse (vereinfachte Beispiele)
-    staedte = {
-    "Aachen",
-    "Aarhus",
-    "Alicante",
-    "Ankara",
-    "Antwerpen",
-    "Barcelona",
-    "Berlin",
-    "Brüssel",
-    "Bukarest",
-    "Dublin",
-    "Düsseldorf",
-    "Edinburgh",
-    "Frankfurt",
-    "Glasgow",
-    "Hamburg",
-    "Helsinki",
-    "Istanbul",
-    "Kopenhagen",
-    "Köln",
-    "Krakau",
-    "Lissabon",
-    "London",
-    "Lyon",
-    "Madrid",
-    "Mailand",
-    "München",
-    "Neapel",
-    "Oslo",
-    "Osnabrück",
-    "Paris",
-    "Prag",
-    "Rom",
-    "Rotterdam",
-    "Sofia",
-    "Stockholm",
-    "Stuttgart",
-    "Tallinn",
-    "Turin",
-    "Ufa",
-    "Valencia",
-    "Vilnius",
-    "Warschau",
-    "Wien",
-    "Zagreb",
-    "Zürich"}
-    laender = {"Albanien",
-    "Andorra",
-    "Armenien",
-    "Aserbaidschan",
-    "Belgien",
-    "Bosnien und Herzegowina",
-    "Bulgarien",
-    "Chile",
-    "Dänemark",
-    "Deutschland",
-    "Estland",
-    "Finnland",
-    "Frankreich",
-    "Georgien",
-    "Griechenland",
-    "Irland",
-    "Island",
-    "Italien",
-    "Kasachstan",
-    "Kosovo",
-    "Kroatien",
-    "Lettland",
-    "Liechtenstein",
-    "Litauen",
-    "Luxemburg",
-    "Malta",
-    "Moldau",
-    "Monaco",
-    "Montenegro",
-    "Niederlande",
-    "Nordmazedonien",
-    "Norwegen",
-    "Österreich",
-    "Oman",
-    "Polen",
-    "Portugal",
-    "Rumänien",
-    "Russland",
-    "San Marino",
-    "Schweden",
-    "Schweiz",
-    "Serbien",
-    "Slowakei",
-    "Slowenien",
-    "Spanien",
-    "Tschechien",
-    "Türkei",
-    "Ukraine",
-    "Ungarn",
-    "Vatikanstadt",
-    "Vereinigtes Königreich",
-    "Weißrussland"}
-    fluesse = {"Alster",
-    "Amper",
-    "Dnepr",
-    "Don",
-    "Donau",
-    "Drau",
-    "Elbe",
-    "Ems",
-    "Enns",
-    "Erft",
-    "Glomma",
-    "Inn",
-    "Isar",
-    "Isonzo",
-    "Lahn",
-    "Lech",
-    "Lippe",
-    "Loire",
-    "Main",
-    "Marne",
-    "Memel",
-    "Mosel",
-    "Mulde",
-    "Mur",
-    "Neckar",
-    "Newa",
-    "Oder",
-    "Po",
-    "Pruth",
-    "Rhein",
-    "Rhône",
-    "Saale",
-    "Sava",
-    "Schelde",
-    "Seine",
-    "Sieg",
-    "Spree",
-    "Tajo",
-    "Temse",
-    "Themse",
-    "Tiber",
-    "Tisza",
-    "Ural",
-    "Vistula",
-    "Waag",
-    "Weichsel",
-    "Weser"}
+    couCitArray = load_database()
+
+
+    names, all_cities = sort_database(couCitArray)
+    print(names)
+    print(all_cities)
+
 
     def pruefe_antwort(kategorie, antwort, buchstabe):
         antwort = antwort.strip().capitalize()
