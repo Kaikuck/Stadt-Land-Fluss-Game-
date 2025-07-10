@@ -16,6 +16,7 @@ def spielrunde():
 
 if __name__ == "__main__":
     print("Willkommen zu Stadt, Land, Fluss!")
+    print("---------------------------------")
     # Datenbanken für Städte, Länder und Flüsse (vereinfachte Beispiele)
     staedte = {
     "Aachen",
