@@ -7,7 +7,7 @@ names = []
 all_cities = []
 
 buchstaben = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-kategorien = [names, all_cities]
+kategorien = ["Land", "Stadt"]
 
 def load_database():
         return json.load(InputData)
@@ -29,9 +29,13 @@ def pruefe_antwort(kategorie, antwort, buchstabe):
         if not antwort.startswith(buchstabe):
             return False
         if kategorie == "Stadt":
-            return antwort in all_cities
+            for city in all_cities:
+                if city == antwort:
+                    return True
         elif kategorie == "Land":
-            return antwort in names
+            for land in names:
+                if land == antwort:
+                    return True
         return False
 
 def spielrunde():
@@ -51,8 +55,8 @@ if __name__ == "__main__":
     # Datenbanken für Städte und Länder laden 
     couCitArray = load_database()
     names, all_cities = sort_database(couCitArray)
-    print(names)
-    print(all_cities)
+    # print(names)
+    # print(all_cities)
 
 
     spielrunde()
